@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Expenditure>
+
+<table style="border-collapse: collapse;">
+    <tr>
+        <th style="padding: 0 15px; border: 1px solid black;">Nom</th>
+        <th style="padding: 0 15px; border: 1px solid black;">Date</th>
+        <th style="padding: 0 15px; border: 1px solid black;">Prix</th>
+    </tr>
+    @foreach (var expenditure in Model)
+    {
+        <tr>
+            <td style="padding: 0 15px; border: 1px solid black;">@expenditure.Name</td>
+            <td style="padding: 0 15px; border: 1px solid black;">@expenditure.Date.ToString("dd/MM/yyyy")</td>
+            <td style="padding: 0 15px; border: 1px solid black;">@expenditure.Price.ToString("F2") €</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="2" style="padding: 0 15px; border: 1px solid black;">Total</td>
+        <td style="padding: 0 15px; border: 1px solid black;">@Model.Sum(e => e.Price).ToString("F2") €</td>
+    </tr>
+</table>
